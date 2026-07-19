@@ -1,0 +1,244 @@
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ trip.name }} – Final Holiday Pack</title>
+</head>
+
+<body style="margin:0; padding:0; background:#eef3f1; font-family:Arial, Helvetica, sans-serif; color:#17202a;">
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#eef3f1;">
+    <tr>
+      <td align="center" style="padding:32px 12px;">
+
+        <table role="presentation" width="680" cellpadding="0" cellspacing="0" border="0"
+               style="width:100%; max-width:680px; background:#ffffff; border-radius:26px; overflow:hidden; box-shadow:0 16px 40px rgba(15,35,30,0.10);">
+
+          <!-- Hero -->
+          <tr>
+            <td style="padding:0; background:#12372f;">
+
+              {% if trip.header_image_url %}
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td background="{{ trip.header_image_url }}"
+                      style="background-image:linear-gradient(rgba(8,35,28,0.38), rgba(8,35,28,0.82)), url('{{ trip.header_image_url }}');
+                             background-size:cover;
+                             background-position:center;
+                             padding:54px 44px 46px;">
+              {% else %}
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="background:linear-gradient(135deg,#12372f 0%,#1e6a57 100%); padding:54px 44px 46px;">
+              {% endif %}
+
+                    <div style="font-size:12px; line-height:1.4; letter-spacing:2.4px; font-weight:800; color:#c9efe4; text-transform:uppercase;">
+                      Final Holiday Pack
+                    </div>
+
+                    <h1 style="margin:14px 0 10px; font-size:40px; line-height:1.1; font-weight:800; color:#ffffff;">
+                      {{ trip.name }}
+                    </h1>
+
+                    <p style="margin:0; font-size:18px; line-height:1.5; color:#e5f7f1;">
+                      {{ trip.destination }}
+                    </p>
+
+                    <p style="margin:8px 0 0; font-size:15px; line-height:1.5; color:#c8e8df;">
+                      {{ trip.start_date.strftime('%d %B %Y') }}
+                      &nbsp;–&nbsp;
+                      {{ trip.end_date.strftime('%d %B %Y') }}
+                    </p>
+
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Main content -->
+          <tr>
+            <td style="padding:40px 38px 34px;">
+
+              <p style="margin:0 0 14px; font-size:18px; line-height:1.6; color:#17202a;">
+                Hi {{ user.name }},
+              </p>
+
+              <p style="margin:0; font-size:16px; line-height:1.75; color:#50605b;">
+                Your holiday has now been finalised. Your complete holiday book is attached as a PDF and has been sent only to your verified registered email address.
+              </p>
+
+              <!-- Status card -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                     style="margin:26px 0 28px; background:#eaf8f4; border:1px solid #d1eee5; border-radius:18px;">
+                <tr>
+                  <td style="padding:20px 22px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="42" valign="top" style="font-size:24px;">
+                          ✓
+                        </td>
+                        <td>
+                          <div style="font-size:15px; font-weight:800; color:#0f513f; margin-bottom:5px;">
+                            Trip successfully finalised
+                          </div>
+                          <div style="font-size:14px; line-height:1.6; color:#56726a;">
+                            Keep the attached PDF downloaded to your phone so your itinerary and documents remain available offline while travelling.
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Summary heading -->
+              <h2 style="margin:0 0 16px; font-size:21px; line-height:1.3; color:#12372f;">
+                Holiday overview
+              </h2>
+
+              <!-- Metrics -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                     style="border-collapse:separate; border-spacing:8px; margin:0 0 30px;">
+
+                <tr>
+                  <td width="50%" valign="top" style="background:#f6f9f8; border:1px solid #e3ebe8; border-radius:16px; padding:18px;">
+                    <div style="font-size:25px; line-height:1; font-weight:800; color:#12372f;">
+                      {{ trip.people|length }}
+                    </div>
+                    <div style="margin-top:7px; font-size:13px; color:#71807b;">
+                      Travellers
+                    </div>
+                  </td>
+
+                  <td width="50%" valign="top" style="background:#f6f9f8; border:1px solid #e3ebe8; border-radius:16px; padding:18px;">
+                    <div style="font-size:25px; line-height:1; font-weight:800; color:#12372f;">
+                      {{ trip.events|length }}
+                    </div>
+                    <div style="margin-top:7px; font-size:13px; color:#71807b;">
+                      Planned activities
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td width="50%" valign="top" style="background:#f6f9f8; border:1px solid #e3ebe8; border-radius:16px; padding:18px;">
+                    <div style="font-size:25px; line-height:1; font-weight:800; color:#12372f;">
+                      {{ stats.packing_pct }}%
+                    </div>
+                    <div style="margin-top:7px; font-size:13px; color:#71807b;">
+                      Packing complete
+                    </div>
+                  </td>
+
+                  <td width="50%" valign="top" style="background:#f6f9f8; border:1px solid #e3ebe8; border-radius:16px; padding:18px;">
+                    <div style="font-size:25px; line-height:1; font-weight:800; color:#12372f;">
+                      €{{ '%.0f'|format(stats.remaining) }}
+                    </div>
+                    <div style="margin-top:7px; font-size:13px; color:#71807b;">
+                      Budget remaining
+                    </div>
+                  </td>
+                </tr>
+
+              </table>
+
+              <!-- Journey section -->
+              <h2 style="margin:0 0 8px; font-size:21px; line-height:1.3; color:#12372f;">
+                Journey highlights
+              </h2>
+
+              <p style="margin:0 0 18px; font-size:14px; line-height:1.6; color:#71807b;">
+                A quick look at the first activities in your final itinerary.
+              </p>
+
+              {% if events %}
+                {% for e in events[:8] %}
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                       style="border-bottom:1px solid #e7ecea;">
+                  <tr>
+                    <td width="92" valign="top" style="padding:15px 10px 15px 0;">
+                      <div style="font-size:12px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; color:#18725d;">
+                        {{ e.event_date.strftime('%d %b') }}
+                      </div>
+                      <div style="margin-top:5px; font-size:13px; color:#7a8783;">
+                        {{ e.event_time.strftime('%H:%M') if e.event_time else 'Any time' }}
+                      </div>
+                    </td>
+
+                    <td valign="top" style="padding:15px 0;">
+                      <div style="font-size:15px; line-height:1.5; font-weight:800; color:#1d2925;">
+                        {{ e.title }}
+                      </div>
+
+                      {% if e.location %}
+                      <div style="margin-top:4px; font-size:13px; line-height:1.5; color:#71807b;">
+                        {{ e.location }}
+                      </div>
+                      {% endif %}
+                    </td>
+                  </tr>
+                </table>
+                {% endfor %}
+              {% else %}
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                       style="background:#f7f9f8; border-radius:14px;">
+                  <tr>
+                    <td style="padding:20px; font-size:14px; line-height:1.6; color:#71807b;">
+                      No itinerary activities have been added yet.
+                    </td>
+                  </tr>
+                </table>
+              {% endif %}
+
+              <!-- Attachment notice -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                     style="margin-top:28px; background:#12372f; border-radius:17px;">
+                <tr>
+                  <td style="padding:22px 24px;">
+                    <div style="font-size:15px; font-weight:800; color:#ffffff; margin-bottom:6px;">
+                      Your complete holiday book is attached
+                    </div>
+                    <div style="font-size:13px; line-height:1.6; color:#cce9e1;">
+                      The PDF includes your itinerary, travellers, packing information, budget summary and uploaded travel documents.
+                    </div>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin:30px 0 0; font-size:16px; line-height:1.7; color:#50605b;">
+                Have an amazing trip,
+              </p>
+
+              <p style="margin:4px 0 0; font-size:16px; line-height:1.7; font-weight:800; color:#12372f;">
+                Holiday Hub
+              </p>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding:24px 34px; background:#f7f9f8; border-top:1px solid #e6ece9; text-align:center;">
+              <p style="margin:0; font-size:12px; line-height:1.6; color:#8a9692;">
+                This email was sent only to your verified Holiday Hub account address.
+              </p>
+
+              <p style="margin:6px 0 0; font-size:12px; line-height:1.6; color:#a2aba8;">
+                Please do not forward emails containing personal travel documents.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
+```

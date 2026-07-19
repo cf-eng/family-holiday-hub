@@ -1,0 +1,1 @@
+document.querySelectorAll('[data-member-type]').forEach(select=>{const age=document.querySelector('[data-age-field]');const sync=()=>{age.hidden=select.value!=='child';age.required=select.value==='child'};select.addEventListener('change',sync);sync()});
