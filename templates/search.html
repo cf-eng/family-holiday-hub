@@ -1,5 +1,0 @@
-{% extends "base.html" %}{% block title %}Search · {{ trip.name }}{% endblock %}
-{% block content %}
-<div class="narrow"><div class="page-head"><div><span class="eyebrow">SEARCH TRIP</span><h1>Find anything</h1></div></div><form class="search-large"><input name="q" value="{{ q }}" autofocus placeholder="Search events, packing, expenses or documents"><button class="button primary">Search</button></form>
-<div class="panel search-results">{% for kind, label, link in results %}<a href="{{ link }}"><span>{{ kind }}</span><strong>{{ label }}</strong><b>→</b></a>{% else %}<div class="empty-mini">{{ "No matching trip information." if q else "Enter a search above." }}</div>{% endfor %}</div></div>
-{% endblock %}
